@@ -1,0 +1,53 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/shopping.png'%}" alt="" width="40" height="24"
+                class="d-inline-block align-text-top">
+            OSP
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'buyer' %}">Home</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <button type="button" class="btn btn-outline-dark" type="submit" href="{% url 'cart' %}">My Cart</button> -->
+        <a class="btn btn-outline-dark" href="{% url 'cart' %}"> My Cart</a>
+        &nbsp;
+        {% comment %} <button type="button" class="btn btn-outline-dark" type="submit" href= "{% url 'logout' %}">Logout</button> {% endcomment %}
+        <a  class="btn btn-outline-dark" href= "{% url 'logout' %}"> Logout</a>
+        &nbsp;
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <br>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+
+                <button data-product={{product.id}} data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                   <a class="btn btn-outline-success" href="{% url 'viewprod' product.id %}" >View</a>
+                <h4 style="float:right">{{product.price}}</h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content%}
