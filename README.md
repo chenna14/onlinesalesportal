@@ -49,4 +49,7 @@ Frontend : HTML, CSS, Bootstrap, JavaScript
 
 Database : SQLite
 
+**How to work with project**
+
+Create a virual environment with requirements.txt(attached above) then go to directory where manage.py is located and then type python manage.py runserver and then go to ip address mentioned in terminal.
 
